@@ -1,0 +1,475 @@
+6400-2100
+4300/24
+6400-800-700-2100
+2800/24
+120.99/52
+23.39/13
+32.50/13
+10/4
+222/300+138/180
+(222/300+138/180)
+(222/300+138/180)/2
+.753333*180
+?scale
+?split
+?scale
+rnorm(100)
+x=rnorm(100)
+scale(x)
+?mutate
+library(plyr)
+library(plier)
+library(plyr)
+1/90
+1/17
+1/90*1000
+1/17*1000
+1/21
+1/21*1000
+47/1000
+38535/(1/21)
+23244/809235
+.028*1000
+1/25000
+0.001*sum(1/seq(0,13,999))
+0.001*sum(1/seq(1,13999))
+0.001*sum(1/seq(1,13999))*1000
+0.001*sum(1/seq(1,14001))*1000
+.75*450
+439-337
+.94*436,974
+.94*436974
+.94*450000
+0.01*510000
+335e9/11e9
+72+38+24
+134*2.4e9
+#
+library(stringr)#
+library(twitteR)#
+library(tm)#
+library(wordcloud)#
+#
+TweetFrame<-function(searchTerm,maxTweets=100)#
+	{#
+	tweetList<-searchTwitter(searchTerm,n=maxTweets)	#
+	tweetDF<-do.call("rbind",lapply(tweetList,as.data.frame))#
+	#
+	# sort tweets in arrival order#
+	return(tweetDF[order(as.integer(tweetDF$created)),])		#
+		#
+	}#
+	#
+	#
+CleanTweets<-function(tweets)#
+{#
+	# Remove redundant spaces#
+	tweets<-str_replace_all(tweets,"  "," ")#
+	#
+	# Get rid of urls#
+	tweets<-str_replace_all(tweets,"http://t.co/[a-z,A-Z,0-9]{8}","")#
+	#
+	#Take out retweet header, there is only one#
+	tweets<-str_replace(tweets,"RT @[a-x,A-Z]*: ","")#
+	#
+	#Get rid of hashtags#
+	tweets<-str_replace_all(tweets,"#[a-z,A-Z]*","")#
+	#
+	# Get rid of references to other screennames#
+	tweets<-str_replace_all(tweets,"@[a-z,A-Z]*","")#
+#
+	return(tweets)	#
+}#
+	#
+	#
+	#
+x=TweetFrame("ENCODE",500)#
+cleanText<-CleanTweets(x$text)
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,+stopwords('english'))
+library(twitteR)#
+library(tm)#
+library(wordcloud)
+library(tm)
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,+stopwords('english'))
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))
+head(tweetCorpus)
+tweetCorpus
+tweetTDM<-TermDocumentMatrix(tweetCorpus)
+tweetTDM
+tweetTDM<-TermDocumentMatrix(tweetCorpus)
+x=TweetFrame("@climate",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)
+tweetTDM
+x=TweetFrame("#climate",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)
+#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+worldcloud(cloudFrame$word,cloudFrame$freq)
+library(wordcloud)
+#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+worldcloud(cloudFrame$word,cloudFrame$freq)
+wordcloud(cloudFrame$word,cloudFrame$freq)
+x=TweetFrame("@MinorityHealth",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+wordcloud(cloudFrame$word,cloudFrame$freq)
+warnings()
+x=TweetFrame("@MinorityHealth",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+wordcloud(cloudFrame$word,cloudFrame$freq)
+cloudFrame
+tdMatrix
+tweetCorpus
+x
+?searchTwitter
+x=TweetFrame("best picture",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+wordcloud(cloudFrame$word,cloudFrame$freq)
+?searchTwitter
+#
+TweetFrame<-function(searchTerm,maxTweets=100)#
+	{#
+	tweetList<-searchTwitter(searchTerm,n=maxTweets,geocode='34.0194,-118.4903,4mi')	#
+	tweetDF<-do.call("rbind",lapply(tweetList,as.data.frame))#
+	#
+	# sort tweets in arrival order#
+	return(tweetDF[order(as.integer(tweetDF$created)),])		#
+		#
+	}
+x=TweetFrame("",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+wordcloud(cloudFrame$word,cloudFrame$freq)
+cleanText
+TweetFrame<-function(searchTerm,maxTweets=100)#
+	{#
+	tweetList<-searchTwitter(searchTerm,n=maxTweets,geocode='34.022886,-118.499563,1mi')	#
+	tweetDF<-do.call("rbind",lapply(tweetList,as.data.frame))#
+	#
+	# sort tweets in arrival order#
+	return(tweetDF[order(as.integer(tweetDF$created)),])		#
+		#
+	}
+x=TweetFrame("",500)#
+cleanText<-CleanTweets(x$text)	#
+tweetCorpus<-Corpus(VectorSource(cleanText))#
+tweetCorpus<-tm_map(tweetCorpus,tolower)#
+tweetCorpus<-tm_map(tweetCorpus,removePunctuation)#
+tweetCorpus<-tm_map(tweetCorpus,removeWords,stopwords('english'))#
+tweetTDM<-TermDocumentMatrix(tweetCorpus)#
+tdMatrix<-as.matrix(tweetTDM)#
+sortedMatrix<-sort(rowSums(tdMatrix),decreasing=TRUE)#
+cloudFrame<-data.frame(word=names(sortedMatrix),freq=sortedMatrix)#
+wordcloud(cloudFrame$word,cloudFrame$freq)
+cleanText
+x$text
+?wordcloud
+pdf(file="CollPlotsLoessSmoothed_2013.02.24.pdf")#
+#
+#
+loess_5utr<-read.csv("whead_noncoding.5utr_5kstep_window_DSVhard_longT_utr_gthan_intron_autosomes.csv")#
+utr5_only<-loess_5utr[loess_5utr$class=="5_utr",]#
+utr5_loess_xy<-loess.smooth(utr5_only$pos,utr5_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+noncoding_only<-loess_5utr[loess_5utr$class=="noncoding",]#
+noncoding_loess_xy<-loess.smooth(noncoding_only$pos,noncoding_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+#
+loess_3utr<-read.csv("whead_noncoding.3utr_nooverlap_window_DSVhard_longT_utr_gthan_intron_autosomes.csv")#
+utr3_only<-loess_3utr[loess_3utr$class=="3_utr",]#
+utr3_loess_xy<-loess.smooth(utr3_only$pos,utr3_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+loess_intron<-read.csv("whead_noncoding.intron_5kstep_window_DSVhard_longT_utr_gthan_intron_autosomes.csv")#
+intron_only<-loess_intron[loess_intron$class=="intron",]#
+intron_loess_xy<-loess.smooth(intron_only$pos,intron_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+loess_cne50<-read.csv("whead_noncoding.cne50_5kstep_window_DSVhard_longT_utr_gthan_intron_autosomes.csv")#
+cne_only<-loess_cne50[loess_cne50$class=="CNE",]#
+cne_loess_xy<-loess.smooth(cne_only$pos,cne_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+#
+loess_syn<-read.csv("whead_noncoding.syn_window_DSVhard_longT_utr_gthan_intron_autosomes_2012.07.18.csv")#
+syn_only<-loess_syn[loess_syn$class=="syn",]#
+syn_loess_xy<-loess.smooth(syn_only$pos,syn_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+loess_nonsyn<-read.csv("whead_noncoding.nonsyn_5kbstep_window_DSVhard_longT_utr_gthan_intron_autosomes_2012.08.04.csv")#
+nonsyn_only<-loess_nonsyn[loess_nonsyn$class=="non_syn",]#
+nonsyn_loess_xy<-loess.smooth(nonsyn_only$pos,nonsyn_only$div,span = 1/6, degree = 1, family = c("gaussian"), evaluation = 50)#
+#
+#
+#
+#
+#plot(utr5_loess_xy$x,utr5_loess_xy$y,type="l",lwd=2.5,xlab="Relative genomic position",ylab=expression(pi/"divergence"),cex.lab=1.2,ylim=c(.0013,.003),col="firebrick3")#
+#plot(utr5_loess_xy$x,utr5_loess_xy$y,xaxt="n",type="l",lwd=2.5,xlab="Relative genomic position (Mb)",ylab=expression(pi/"divergence"),cex.lab=1.2,ylim=c(.0013,.003),col="firebrick3")#
+#
+#
+par(lwd=2.5)#
+#
+plot(utr5_loess_xy$x,utr5_loess_xy$y,xaxt="n",type="n",xlab="Relative genomic position (Mb)",ylab="Diversity/divergence",cex.lab=1.2,ylim=c(.0013,.003),col="firebrick3")#
+#
+# points(noncoding_only$pos,noncoding_only$div,col=adjustcolor("black",0.1)) #
+# points(utr3_only$pos,utr3_only$div,col=adjustcolor("purple",0.1)) #
+# points(intron_only$pos,intron_only$div,col=adjustcolor("cornflowerblue",0.1)) #
+# points(cne_only$pos,cne_only$div,col=adjustcolor("forestgreen",0.1)) #
+# points(syn_only$pos,syn_only$div,col=adjustcolor("goldenrod1",0.1)) #
+# points(nonsyn_only$pos,nonsyn_only$div,col=adjustcolor("wheat4",0.1)) #
+#
+smooth=1.5#
+lines(lowess(noncoding_only$div~noncoding_only$pos),col=adjustcolor("black",0.1)) #
+lines(lowess(utr3_only$div~utr3_only$pos),col=adjustcolor("purple",0.1)) #
+lines(lowess(intron_only$div~intron_only$pos),col=adjustcolor("cornflowerblue",0.1)) #
+lines(lowess(cne_only$div~cne_only$pos),col=adjustcolor("forestgreen",0.1)) #
+lines(lowess(syn_only$div~syn_only$pos),col=adjustcolor("goldenrod1",0.1)) #
+lines(lowess(nonsyn_only$div~nonsyn_only$pos),col=adjustcolor("wheat4",0.1))#
+#
+#
+#
+lines(lowess(non~ss.allele,f = smooth),col="black") #
+lines(lowess(ss.geno[,3]~ss.allele,f = smooth),col="black") #
+lines(lowess(ss.geno[,2]~ss.allele,f = smooth),col="black")#
+#
+#
+#
+lines(noncoding_loess_xy$x,noncoding_loess_xy$y,type="l",lty=2,col="black")#
+lines(utr3_loess_xy$x,utr3_loess_xy$y,type="l",col="purple")#
+lines(intron_loess_xy$x,intron_loess_xy$y,type="l",col="cornflowerblue")#
+lines(cne_loess_xy$x,cne_loess_xy$y,type="l",col="forestgreen")#
+lines(syn_loess_xy$x,syn_loess_xy$y,type="l",col="goldenrod1")#
+lines(nonsyn_loess_xy$x,nonsyn_loess_xy$y,type="l",col="wheat4")#
+#######
+positions<-c(-1000000,-500000,0,500000,1000000)#
+axis(side = 1, at = positions, labels = c("-1.0","-0.5","0","0.5","1.0"),cex=1.2)#
+#
+legend("topright",legend=c("Noncoding (n=111)","Synonymous (n=27)","Non-synonymous (n=17)","5' UTR (n=54)", "3' UTR (n=28)","Intron (n=687)","CNE (n=72)"),lty=1,lwd=2,ncol=2,col=c("black","goldenrod1","wheat4","firebrick3","purple","cornflowerblue","forestgreen"),cex=1.2)#
+#
+dev.off()
+16^^2
+16^2
+16*4*16
+256/16/4
+.3*12
+3/13
+3/12
+x-c(150,108)
+x=c(150,108)
+x*1.25
+4*1250
+3*2*750
+4*2*750
+4*1300+4*2*750
+4*1300+4*2*800
+4*1300+4*2*750
+4*1300+3*2*750
+2*1300+4*2*750
+3*1300+4*2*750
+?svd
+y = rand(1000,10000);#
+ x = y < 0.0005;#
+c = pca(x');#
+plot(c(:,1), c(:,2),'.')
+y=sample(c("Alex","Darren","Charleston","Diego","Eunjung"),replace=FALSE)
+y
+X=c(0,131,6439)
+p=0.5*131+6439
+2*sum(X)
+p
+p/(2*sum(X))
+p=131+2*6439
+p/(2*sum(X))
+p
+2*p*(1-p)
+p
+x=p/(2*sum(X))
+2*x*(1-x)
+2*x*(1-x)*sum(X)
+50000*100
+3e-9*1.5e-8
+3e9*1.5e-8
+3e9*1.3e-8
+1700*12
+2000*12
+1500*12
+1500*12+1700*12
+160000*.13
+160000*0.01
+160000*0.01*10
+1000/160000
+.13+.055
+160000*0.05
+12000/160000
+160000*0.20
+160000*0.25
+4e6/160e3
+4e6/80e3
+2e6/80e3
+17e3/12
+17e3/160e3
+.10+18.5
+$8000*12
+8e3*12
+1.5+.666+1+0.5
+3/4+4/6+1+0.5
+2.2e-9/3
+2.2e-9*3
+.39e-4/1.2e-8*3
+.46e-4/1.2e-8*3
+.5e-4/1e-8*3
+.46e-4/1e-8*3
+.53e-4/1e-8*3
+1500*1000
+1500*1000/75
+510000/1570
+510000/1570*1350
+50*18
+13600*12
+5115/245
+5115/25
+exp(0.0166*204.6)
+10000*exp(0.0166*204.6)
+1385+261+153+414+54+2
+222+1000+2753
+2753+222+250
+9600+1280
+(9600+1280)/3
+2500/35
+688.54+316.88
+3200+2250
+3200+2250+5000
+3200+2250+1444+3322
+2/9
+0.05/3e6
+0.05/17.3e6
+108e3/17e6
+sum(rnorm(1000)>0)
+sum(rnorm(1e5)>0)
+sum(rnorm(1e5)>4)
+sum(rnorm(1e6)>4)
+sum(rnorm(1e9/1e3)>4)
+160000/12
+160000/12*.28
+160000/12*.35
+1600*12
+4500/12
+4500/30
+17500*2+27500*2
+require(INLA)
+sfact=function(lambda,gamma=0.1){return((lambda-1)/(lambda+gamma-1))}
+sfact(c(1,0.5.,0.25,0.1))
+x=c(1,0.5.,0.25,0.1);apply(x,1,sfact)
+x=c(1,0.5,0.25,0.1);apply(x,1,sfact)
+sfact(c(1,0.5,0.25,0.1))
+sfact(c(0.99,0.5,0.25,0.1))
+sfact(c(0.94,0.5,0.25,0.1))
+sfact(c(0.92,0.5,0.25,0.1))
+29240/4
+x=seq(0,1,10)
+x
+x=seq(0,1,length.out=10)
+x
+x=seq(0,1,length.out=10); plot(x,dbeta(x,2,1))
+x=seq(0,1,length.out=10); plot(x,dbeta(x,5,5))
+x=seq(0,1,length.out=10); plot(x,dbeta(x,5,5),type='l')
+x=seq(0,1,length.out=50); plot(x,dbeta(x,5,5),type='l')
+x=seq(0,1,length.out=100); plot(x,dbeta(x,5,5),type='l')
+x=seq(0,1,length.out=100); plot(x,dbeta(x,0,2),type='l')
+x=seq(0,1,length.out=100); plot(x,dbeta(x,1,3),type='l')
+x=seq(0,1,length.out=100); plot(x,pbeta(x,1,3),type='l')
+x=seq(0,1,length.out=100); plot(x,dbeta(x,1,3),type='l')
+x=seq(0,1,length.out=100); plot(x,pbeta(x,1,3),type='l')
+x=seq(0,1,length.out=100); plot(x,pbeta(x,1,1),type='l')
+x=seq(0,1,length.out=100); plot(x,pbeta(x,1,3),type='l')
+x=seq(0,1,length.out=100); plot(x,pbeta(x,1,3),type='l');abline(a=0,b=1)
+dbinom(0,2,p=0.8)
+pbinom(0,2,p=0.8)
+qbinom(0,2,p=0.8)
+qbinom(0,size=2,p=0.8)
+pbinom(0,size=2,p=0.8)
+pbinom(1,size=2,p=0.8)
+pbinom(2,size=2,p=0.8)
+dbinom(2,size=2,p=0.8)
+dbinom(0,size=2,p=0.8)
+dbinom(1,size=2,p=0.8)
+200000/12
+200000/3000
+200000/3000/12
+550-409
+141+40
+409/450
+408/450
+405/450
+550-409
+480/3
+x=read.table("~/Downloads/polyscore.1429+2.txt")
+head(x)
+x[order(x$V2),]
+install.packages("popgen'")
+install.packages("popgen")
+install(popgen)
+library(popgen)
+40000*0.0001
+4e6*0.0001
+400*30
+400*20
+4e6*0.0001
+setwd("~/git/Novembre_etal_2008_misc/files/")
+#
+library(sp)#
+library(rgdal)#
+load("world_countries.rda")#
+coldatamap=read.table("ColorTablePCmap.txt",sep="\t",as.is=TRUE)#
+names(coldatamap)=c("cntry","color")#
+row.names(coldatamap)=toupper(coldatamap$cntry)#
+plot(worldpolys,xlim=c(-8,35),ylim=c(35,60),col=coldatamap[toupper(worldpolys$names),"color"])
