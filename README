@@ -45,3 +45,12 @@ POPRES_08_24_01.EuroThinFinal.LD_0.8.exLD.fam : A .fam file in plink format desc
 
 affyProves-rsid.txt : A mapping of Affymetrix probe names to rsid's.
 
+POPRES_08_24_01.EuroThinFinal.LD_0.8.exLD.out0-PCA.par : Input file for smartpca
+POPRES_08_24_01.EuroThinFinal.LD_0.8.exLD.out0-PCA.eigs : Smartpca output with individual coordinates
+POPRES_08_24_01.EuroThinFinal.LD_0.8.exLD.out0-PCA.eval : Smartpca output with eigenvalues 
+POPRES_08_24_01.EuroThinFinal.LD_0.8.exLD.out0-PCA.snpeigs : Smartpca output containing SNP loadings that define the principal components
+
+
+
+
+
